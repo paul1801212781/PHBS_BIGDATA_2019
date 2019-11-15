@@ -7,4 +7,4 @@ What should I do to learn it?
 In addition, it is useful to **practice** *a lot*
 Otherwise, I can study on the [Website] (https://guides.github.com/features/mastering-markdown/)
 
-Download from the [website](https://sourceforge.net/projects/gitextensions/)
+Download Git_Extensions from the [website](https://sourceforge.net/projects/gitextensions/)
