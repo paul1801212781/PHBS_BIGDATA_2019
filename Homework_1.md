@@ -14,4 +14,6 @@ For a PKUSZ student, which city in China is most livable after graduation?
   **Variety**: a wide range of data will be collected in this project. For example, in job information set, job name, wage and location will be collected. As for housing information set, price, size, location and amenity is of our interest. 
   
 ### Workflow
-![Image of workflow](http://note.youdao.com/noteshare?id=aa1f757e3d568d7b2f4ac67eae7f60b2)
+![QZ3uUf.jpg](https://s2.ax1x.com/2019/11/30/QZ3uUf.jpg)
+
+
