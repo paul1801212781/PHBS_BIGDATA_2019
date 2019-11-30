@@ -38,7 +38,7 @@ Source: https://bj.fang.com/
 #### 3 Selection for feasible houses
 In each city, I compute the annual income of different quantile and the total value of each house. Feasible houses will be selected if the total value of house to annual income ratio is less than 30 (criterion hasn’t been decided yet).
 
-#### 4 Utility Surveys
+#### 4 Utility surveys
 In order to measure the total utility of the feasible houses, utility surveys will be conducted among PKUSZ students. Basically, I need to decide the weights for different kinds of amenities.
 
 Definition of each indicator:
