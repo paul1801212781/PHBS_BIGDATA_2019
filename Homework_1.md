@@ -59,4 +59,5 @@ With the parameter estimated in the utility surveys, I can compute a score for e
 #### 6&7 Decision making
 After calculating the average score of feasible houses, city of the highest average score is most livable. 
 
-### Database choice: I will choose relational database since the data is structural in the form of table. 
+### Database choice
+I will choose relational database since the data is structural in the form of table. 
