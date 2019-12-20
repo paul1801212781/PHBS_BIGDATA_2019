@@ -21,7 +21,7 @@ closed_form_1(x_training,y_training)
 #### Q2: Formula and R square
 **Mathematical formula:**  
 Temp=-124.59+0.0642*MEI+0.0065*CO2+0.0001*CH4-0.0165*N2O-0.0066*CFC-11+0.0038*CFC-12+0.0931*TSI-1.537*Aerosols  
-The R_square for training data is 75.10%  
+The R_square for training data is 75.09%  
 The R_square for testing data is 22.52%  
 
 **Python code:**  
@@ -97,3 +97,13 @@ Lumbda | constant | MEI | CO2 | CH4 | N2O | CFC-11 | CFC-12 | TSI | Aerosols
 0.1 | -0.0250 | 0.0507 | 0.00699 | 0.000131 | -0.0148 | -0.00608 | 0.00366 | 0.00136 | -0.871
 1 | -0.00229 | 0.0440 | 0.00804 | 0.000214 | -0.0169 | -0.00647 | 0.00377 | 0.00146 | -0.212
 10 | -0.000220 | 0.0405 | 0.00815 | 0.000205 | -0.0161 | -0.00636 | 0.00369 | 0.00126 | -0.0244
+
+**Reasons for robustness:**  
+Regularization term in the cost function prevent the coefficients to fit so perfectly to overfit. Regularization term shrink the parameter to zeros. With such constraints, parameters are less subject to the noise of training data so they can perform better in testing. 
+
+#### Q4: Choosing the optimal lumbda  
+Lumbda | 0 | 0.001 | 0.01 | 0.1 | 1 | 10
+------ | --| ----- | ---- | --- | - | ---
+Training Data| 75.09% |71.48%| 71.17%| 69.45%| 67.95%|67.46%
+Testing Data | 22.52% | 56.25%| 58.53%| 67.33%| 84.68%| 94.09%
+
