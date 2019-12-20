@@ -107,3 +107,4 @@ Lumbda | 0 | 0.001 | 0.01 | 0.1 | 1 | 10
 Training Data| 75.09% |71.48%| 71.17%| 69.45%| 67.95%|67.46%
 Testing Data | 22.52% | 56.25%| 58.53%| 67.33%| 84.68%| 94.09%
 
+I may choose lumbda=10 because the sum of R_square of testing data and training data is biggest. This means that the model fully captures the characterists of trainging data and has a huge prediction power for testing data. The role of regularization is twofold. On one hand, it make the parameter invulnerable to the noise of training data so that it can better predict testing data. On the other hand, too much restriction may make parameter fails to capture the characteristics of training data so that it can not fully predict testing data.
