@@ -64,3 +64,36 @@ for ii in range(len(para)):
     t_stat[ii]=para[ii]/(SE_mat[ii,ii]**0.5)  
 t_stat  
 
+#### Q4: Necessary Condition and application to dataset 2
+**Necessary condition:** 
+1. Dependent variable is linearly correlated with regressors (linear in parameters)
+1. Exogeneity between error terms and regressors (they are uncorrelated)
+1. Homoskedasticity of error terms (variance of error term is constant)
+1. No autocorrelation of error terms
+1. No multicollinearity of regressors (otherwise inverse of x.T@x is not feasible)
+1. Normality of error term (under large sample, this condition is not necessary)
+
+??What is the problem
+
+### Problem 2
+#### Q1: Loss Function of L1 and L2 Regularization  
+**cost function of L1 regularization (LASSO):** 
+![cost function of L1](https://s2.ax1x.com/2019/12/20/QOLnyj.png)
+
+**cost function of L2 regularization (Ridge):** 
+![cost function of L2](https://s2.ax1x.com/2019/12/20/QOqvWD.png)
+
+#### Q2: Function for Regularization  
+**Python code:**  
+def closed_form_2(x,y,lumbda):  
+&#8195;x=np.concatenate((np.ones((len(y),1)),x),axis=1)  
+&#8195;parameter=np.linalg.inv(x.T@x+lumbda*np.eye(len(x[0,:])))@x.T@y  
+&#8195;return parameter  
+
+#### Q3: Comparison and Explaination
+Lumbda | constant | MEI | CO2 | CH4 | N2O | CFC-11 | CFC-12 | TSI | Aerosols
+------ | ---------| --- | --- | --- | --- | ------ | ------ | --- | --------
+0 | -124.59| 0.0642 | 0.0065 | 0.0001 | -0.0165 | -0.0066 | 0.0038 | 0.0931 | -1.537
+0.1 | -0.0250 | 0.0507 | 0.00699 | 0.000131 | -0.0148 | -0.00608 | 0.00366 | 0.00136 | -0.871
+1 | -0.00229 | 0.0440 | 0.00804 | 0.000214 | -0.0169 | -0.00647 | 0.00377 | 0.00146 | -0.212
+10 | -0.000220 | 0.0405 | 0.00815 | 0.000205 | -0.0161 | -0.00636 | 0.00369 | 0.00126 | -0.0244
