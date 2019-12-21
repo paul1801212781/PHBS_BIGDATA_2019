@@ -169,3 +169,49 @@ Temp=0.999+ 0.997*MEI+0.503*CO2-1.322*CH4+0.958*N2O+0.832*CFC-11+0.660*CFC-12+0.
 
 **Cost function tract:**  
 ![cost function](https://s2.ax1x.com/2019/12/21/QvY53d.png)
+
+**Python code:**  
+import numpy as np  
+import pandas as pd  
+import matplotlib.pyplot as plt  
+
+df = pd.read_excel('C:\\Users\\Lenovo\\Desktop\\PHBS\\研二\\module 2\\Big data analysis\\HW\\climate_change_1.xlsx')  
+df.head()  
+y_training=np.array(df.loc[:283,['Temp']])  
+y_training=y_training.reshape(len(y_training),1)  
+x_training=np.array(df.iloc[:284,2:10])  
+x_training=x_training.reshape(len(y_training),len(x_training[0,:]))  
+
+def gradient_descent(x,y,para,alpha=0.1):  
+&#8195;x=np.concatenate((np.ones((len(y),1)),x),axis=1)  
+&#8195;obs=len(y)  
+&#8195;cost_new=np.sum((x@para-y)**2)/(2*obs)  
+&#8195;i=0  
+&#8195;cost_array=[]  
+&#8195;while True:  
+&#8195;&#8195;cost_array.append(cost_new)  
+&#8195;&#8195;cost_old=cost_new  
+&#8195;&#8195;for ii in range(len(para)):  
+&#8195;&#8195;&#8195;para[ii]-=alpha*np.sum((x@para-y)*x[:,ii])/obs  
+&#8195;&#8195;cost_new=np.sum((x@para-y)**2)/(2*obs)  
+&#8195;&#8195;i+=1  
+&#8195;&#8195;if i%100==0:  
+&#8195;&#8195;&#8195;print(i,'th rounds:')  
+&#8195;&#8195;&#8195;print('cost function is',cost_old)  
+&#8195;&#8195;if np.abs(cost_new-cost_old)<10:  
+&#8195;&#8195;&#8195;print('\n','iteration terminates at',i,'rounds')  
+&#8195;&#8195;&#8195;print('the parameter is',para,'\n')  
+&#8195;&#8195;&#8195;print('cost function is',cost_new)  
+&#8195;&#8195;&#8195;plt.plot(cost_array)  
+&#8195;&#8195;&#8195;plt.title('The convergence of cost function')  
+&#8195;&#8195;&#8195;plt.ylim(cost_new-(cost_new%10000)-20000,cost_new-(cost_new%10000)+100000)  
+&#8195;&#8195;&#8195;plt.show()  
+&#8195;&#8195;&#8195;break  
+&#8195;&#8195;if i>=2000:  
+&#8195;&#8195;&#8195;print('\n','the iteration diverges')  
+&#8195;&#8195;&#8195;break  
+&#8195;return para  
+
+para_initial=np.ones(9)  
+gradient_descent(x_training,y_training,para_initial,0.000000001)  
+
