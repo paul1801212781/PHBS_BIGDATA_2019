@@ -73,7 +73,10 @@ t_stat
 1. No multicollinearity of regressors (otherwise inverse of x.T@x is not feasible)
 1. Normality of error term (under large sample, this condition is not necessary)
 
-??What is the problem
+When the closed form formula is applied to climate_change_2, we can not get the result because NO is perfectly correlated with CH4, which violates the fifth condition. 
+
+**Correlation matrix of the regressors:**  
+![correlation matrix of regressors](https://s2.ax1x.com/2019/12/21/QvENGD.png)
 
 ### Problem 2: Regularization
 #### Q1: Loss Function of L1 and L2 Regularization  
@@ -131,7 +134,9 @@ for ii in range(num):
 
 #### Q2: Refined model
 Temp=-127.21+0.0678*MEI-0.00620*CFC-11+0.00366*CFC-12+0.0931*TSI-1.66* Aerosols  
+
 **Model performance:**  
+
 Lumbda | 0 | 0.001 | 0.01 | 0.1 | 1 | 10
 ------ | --| ----- | ---- | --- | - | ---
 Training Data| 74.34% |70.80%| 70.44%| 68.47%| 66.71%|66.26%
