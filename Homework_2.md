@@ -1,6 +1,6 @@
 # Big Data Analysis Assignment 2
 ## Yongqiao Chen 1801212781
-### Problem 1
+### Problem 1: First Model
 #### Q1: Calculate the closed form solution of linear regression  
 **Python code:**  
 import numpy as np  
@@ -75,7 +75,7 @@ t_stat
 
 ??What is the problem
 
-### Problem 2
+### Problem 2: Regularization
 #### Q1: Loss Function of L1 and L2 Regularization  
 **cost function of L1 regularization (LASSO):** 
 ![cost function of L1](https://s2.ax1x.com/2019/12/20/QOLnyj.png)
@@ -106,5 +106,28 @@ Lumbda | 0 | 0.001 | 0.01 | 0.1 | 1 | 10
 ------ | --| ----- | ---- | --- | - | ---
 Training Data| 75.09% |71.48%| 71.17%| 69.45%| 67.95%|67.46%
 Testing Data | 22.52% | 56.25%| 58.53%| 67.33%| 84.68%| 94.09%
+MSE | 0.00910 | 0.0136 | 0.0139 | 0.0152 | 0.0177 | 0.0190 | 0.0194 | 0.0197
 
-I may choose lumbda=10 because the sum of R_square of testing data and training data is biggest. This means that the model fully captures the characterists of trainging data and has a huge prediction power for testing data. The role of regularization is twofold. On one hand, it make the parameter invulnerable to the noise of training data so that it can better predict testing data. On the other hand, too much restriction may make parameter fails to capture the characteristics of training data so that it can not fully predict testing data.
+MSE is the mean square prediction error. I consider MSE as the indicator of model selection because MSE represents the accuracy of prediction. From the table, I think lumbda = 0 is the best.
+
+**Python code:**  
+def MSE(para,x,y):  
+&#8195;x=np.concatenate((np.ones((len(y),1)),x),axis=1)  
+&#8195;y_hat=x@para  
+&#8195;result=np.sum((y_hat-y)**2)/len(y)  
+&#8195;return result  
+
+lumbda_array=np.array([0,0.001,0.01,0.1,1,10])  
+num=len(lumbda_array)  
+mat=np.zeros((3,num))  
+for ii in range(num):  
+&#8195;mat[0,ii]=R_square(closed_form_2(x_training,y_training,lumbda_array[ii]),x_training,y_training)  
+&#8195;mat[1,ii]=R_square(closed_form_2(x_training,y_training,lumbda_array[ii]),x_testing,y_testing)  
+&#8195;mat[2,ii]=MSE(closed_form_2(x_training,y_training,lumbda_array[ii]),x_testing,y_testing)  
+
+### Problem 3: Feature Selection
+#### Q1: Workflow for selection
+![workflow](https://s2.ax1x.com/2019/12/21/QjyKds.png)
+
+#### Q2: Refined model
+Temp=-127.21+0.0678*MEI-0.00620*CFC-11+0.00366*CFC-12+0.0931*TSI-1.66* Aerosols 
