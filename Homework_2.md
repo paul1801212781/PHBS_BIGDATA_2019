@@ -73,7 +73,7 @@ t_stat
 1. No multicollinearity of regressors (otherwise inverse of x.T@x is not feasible)
 1. Normality of error term (under large sample, this condition is not necessary)
 
-When the closed form formula is applied to climate_change_2, we can not get the result because NO is perfectly correlated with CH4, which violates the fifth condition. 
+When the closed form formula is applied to climate_change_2, we can not get the result because NO is perfectly correlated with CH4, which violates the fifth condition. Besides, I observe a strong correlation between regressors in the Q1, which necessitates the variables selection in problem 3. 
 
 **Correlation matrix of the regressors:**  
 ![correlation matrix of regressors](https://s2.ax1x.com/2019/12/21/QvENGD.png)
