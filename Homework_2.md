@@ -159,3 +159,13 @@ mat_2=pd.DataFrame(mat_2)
 mat_2.columns=list(lumbda_array)  
 mat_2.index=['Training Data','Testing Data','MSE']  
 mat_2  
+
+### Problem 4: Gradient Descent
+**Iterative function:**  
+![iterative function](https://s2.ax1x.com/2019/12/21/QvZMH1.png)  
+
+**Formula:**  
+Temp=0.999+ 0.997*MEI+0.503*CO2-1.322*CH4+0.958*N2O+0.832*CFC-11+0.660*CFC-12+0.944*TSI+1.000*Aerosols  
+
+**Cost function tract:**  
+![cost function](https://s2.ax1x.com/2019/12/21/QvY53d.png)
