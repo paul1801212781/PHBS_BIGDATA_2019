@@ -106,7 +106,7 @@ Lumbda | 0 | 0.001 | 0.01 | 0.1 | 1 | 10
 ------ | --| ----- | ---- | --- | - | ---
 Training Data| 75.09% |71.48%| 71.17%| 69.45%| 67.95%|67.46%
 Testing Data | 22.52% | 56.25%| 58.53%| 67.33%| 84.68%| 94.09%
-MSE | 0.00910 | 0.0136 | 0.0139 | 0.0152 | 0.0177 | 0.0190 | 0.0194 | 0.0197
+MSE | 0.00910 | 0.0136 | 0.0139 | 0.0152 | 0.0177 | 0.0190
 
 MSE is the mean square prediction error. I consider MSE as the indicator of model selection because MSE represents the accuracy of prediction. From the table, I think lumbda = 0 is the best.
 
@@ -130,4 +130,27 @@ for ii in range(num):
 ![workflow](https://s2.ax1x.com/2019/12/21/QjyKds.png)
 
 #### Q2: Refined model
-Temp=-127.21+0.0678*MEI-0.00620*CFC-11+0.00366*CFC-12+0.0931*TSI-1.66* Aerosols 
+Temp=-127.21+0.0678*MEI-0.00620*CFC-11+0.00366*CFC-12+0.0931*TSI-1.66* Aerosols  
+**Model performance:**  
+Lumbda | 0 | 0.001 | 0.01 | 0.1 | 1 | 10
+------ | --| ----- | ---- | --- | - | ---
+Training Data| 74.34% |70.80%| 70.44%| 68.47%| 66.71%|66.26%
+Testing Data | 16.07% | 39.70%| 41.21%| 46.70%| 57.91%| 62.46%
+MSE | 0.00818 | 0.0114 | 0.0117 | 0.0126 | 0.0144 | 0.0151
+
+From the table above, I will choose lumbda=0. This model performs better than that in problem 2 as MSE is smaller.  
+
+**Python code:**  
+x_training_2=np.array(df.loc[:283,['MEI','CFC-11','CFC-12','TSI','Aerosols']])  
+x_training_2=x_training_2.reshape(len(y_training),len(x_training_2[0,:]))  
+x_testing_2=np.array(df.loc[284:,['MEI','CFC-11','CFC-12','TSI','Aerosols']])  
+x_testing_2=x_testing_2.reshape(len(y_testing),len(x_testing_2[0,:]))  
+mat_2=np.zeros((3,num))  
+for ii in range(num):  
+&#8195;mat_2[0,ii]=R_square(closed_form_2(x_training_2,y_training,lumbda_array[ii]),x_training_2,y_training)  
+&#8195;mat_2[1,ii]=R_square(closed_form_2(x_training_2,y_training,lumbda_array[ii]),x_testing_2,y_testing)  
+&#8195;mat_2[2,ii]=MSE(closed_form_2(x_training_2,y_training,lumbda_array[ii]),x_testing_2,y_testing)  
+mat_2=pd.DataFrame(mat_2)  
+mat_2.columns=list(lumbda_array)  
+mat_2.index=['Training Data','Testing Data','MSE']  
+mat_2  
