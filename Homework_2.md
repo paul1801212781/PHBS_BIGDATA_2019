@@ -145,6 +145,10 @@ MSE | 0.00818 | 0.0114 | 0.0117 | 0.0126 | 0.0144 | 0.0151
 
 From the table above, I will choose lumbda=0 because the MSE is the smallest. This model performs better than that in problem 2 as MSE is smaller.  
 
+**Residual Plot:**  
+The standardized residuals are evenly located around x axis, which justify our model.  
+![residuals plot](https://s2.ax1x.com/2019/12/27/lZIEDI.png)
+
 **Python code:**  
 **VIF code:**  
 var_name=list(df.columns[2:11])  
@@ -181,6 +185,21 @@ mat_2=pd.DataFrame(mat_2)
 mat_2.columns=list(lumbda_array)  
 mat_2.index=['Training Data','Testing Data','MSE']  
 mat_2  
+
+**Residuals Plot:**  
+para=closed_form_2(x_training_2,y_training,0)  
+x_training_2=np.concatenate((np.ones((len(y_training),1)),x_training_2),axis=1)  
+y_hat=x_training_2@para  
+residuals=y_training-y_hat  
+residuals=residuals.reshape(1,len(residuals))  
+residuals=residuals/((residuals.var())**0.5)  
+y_hat=y_hat.reshape(1,len(y_hat))  
+
+plt.scatter(y_hat,residuals)  
+plt.title('Residuals Plot of Refined Model')  
+plt.xlabel('Estimated Value')  
+plt.ylabel('Standardized Residuals')  
+plt.show()  
 
 ### Problem 4: Gradient Descent
 **Iterative function:**  
