@@ -143,9 +143,31 @@ Training Data| 74.34% |70.80%| 70.44%| 68.47%| 66.71%|66.26%
 Testing Data | 16.07% | 39.70%| 41.21%| 46.70%| 57.91%| 62.46%
 MSE | 0.00818 | 0.0114 | 0.0117 | 0.0126 | 0.0144 | 0.0151
 
-From the table above, I will choose lumbda=0. This model performs better than that in problem 2 as MSE is smaller.  
+From the table above, I will choose lumbda=0 because the MSE is the smallest. This model performs better than that in problem 2 as MSE is smaller.  
 
 **Python code:**  
+**VIF code:**  
+var_name=list(df.columns[2:11])  
+r_square=[]  
+for ii in range(len(var_name)):  
+&#8195;print(ii)  
+&#8195;y=np.array(df.loc[:283,[var_name[ii]]])  
+&#8195;var_name.remove(var_name[ii])  
+&#8195;x=np.array(df.loc[:283,var_name])  
+&#8195;r_square.append(R_square(closed_form_1(x,y),x,y))  
+&#8195;var_name=list(df.columns[2:11])  
+&#8195;print(R_square(closed_form_1(x,y),x,y))  
+
+r_square=np.array(r_square)  
+vif=1/(1-r_square)  
+vif=pd.Series(vif)  
+vif.index=list(df.columns[2:11])  
+vif.name='VIF'  
+vif  
+
+![VIF](https://s2.ax1x.com/2019/12/27/lVmolD.png)
+
+**Performance code:**  
 x_training_2=np.array(df.loc[:283,['MEI','CFC-11','CFC-12','TSI','Aerosols']])  
 x_training_2=x_training_2.reshape(len(y_training),len(x_training_2[0,:]))  
 x_testing_2=np.array(df.loc[284:,['MEI','CFC-11','CFC-12','TSI','Aerosols']])  
