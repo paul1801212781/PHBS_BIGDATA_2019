@@ -165,10 +165,10 @@ mat_2
 ![iterative function](https://s2.ax1x.com/2019/12/21/QvZMH1.png)  
 
 **Formula:**  
-Temp=0.999+ 0.997*MEI+0.503*CO2-1.322*CH4+0.958*N2O+0.832*CFC-11+0.660*CFC-12+0.944*TSI+1.000*Aerosols  
+Temp=0.9987+ 0.9995*MEI+0.5081*CO2-1.288*CH4+0.9451*N2O+0.9568*CFC-11+0.9169*CFC-12+0.7862*TSI+1.000*Aerosols  
 
 **Cost function tract:**  
-![cost function](https://s2.ax1x.com/2019/12/21/QvY53d.png)
+![cost function](https://s2.ax1x.com/2019/12/27/lVklJe.png)
 
 **Python code:**  
 import numpy as np  
@@ -212,6 +212,6 @@ def gradient_descent(x,y,para,alpha=0.1):
 &#8195;&#8195;&#8195;break  
 &#8195;return para  
 
-para_initial=np.ones(9)  
+para_initial=np.ones(9).reshape(9,1)  
 gradient_descent(x_training,y_training,para_initial,0.000000001)  
 
