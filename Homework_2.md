@@ -102,7 +102,7 @@ Lumbda | constant | MEI | CO2 | CH4 | N2O | CFC-11 | CFC-12 | TSI | Aerosols
 10 | -0.000220 | 0.0405 | 0.00815 | 0.000205 | -0.0161 | -0.00636 | 0.00369 | 0.00126 | -0.0244
 
 **Reasons for robustness:**  
-Regularization term in the cost function prevent the coefficients to fit so perfectly to overfit. Regularization term shrink the parameter to zeros. With such constraints, parameters are less subject to the noise of training data so they can perform better in testing. 
+Regularization term in the cost function prevent the coefficients from fitting so perfectly to overfit. Regularization term shrink the parameter to zeros. With such constraints, parameters are less subject to the noise of training data so they can perform better in testing. 
 
 #### Q4: Choosing the optimal lumbda  
 Lumbda | 0 | 0.001 | 0.01 | 0.1 | 1 | 10
